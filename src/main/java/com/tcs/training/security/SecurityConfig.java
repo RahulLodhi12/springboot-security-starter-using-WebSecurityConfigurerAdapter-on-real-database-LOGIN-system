@@ -1,9 +1,5 @@
 package com.tcs.training.security;
 
-//import com.tcs.training.service.MyUserDetailsService;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-
 import com.tcs.training.service.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -38,6 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/user").hasRole("USER")
                 .antMatchers("/user/{id}").hasRole("USER")
+                .antMatchers("/allUser").hasRole("ADMIN")
                 .antMatchers("/").permitAll()
                 .and()
                 .formLogin();
